@@ -1,0 +1,3 @@
+#zen_locale_country_reset:
+#    path:     /countries-reset
+#    defaults: { _controller: ZENLocaleBundle:Countries:reset }
