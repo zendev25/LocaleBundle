@@ -31,7 +31,7 @@ class TranslatableEntity implements Translatable {
      * @var boolean
      * @ORM\Column(name="status_trans", type="boolean", options={"default" = 1})
      */
-    private $statusTrans;
+    private $statusTrans = true;
 
     public function __construct() {
         $this->statusTrans = true;
