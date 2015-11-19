@@ -1,12 +1,12 @@
 <?php
-namespace ZEN\LocaleBundle\Listener;
+namespace ZEN\LocaleBundle\Service;
 
 /**
  * Description of ActiveLanguages
  *
  * @author jona
  */
-class ActiveLanguages 
+class ActiveLanguages
 {
     
     private $em;
@@ -21,8 +21,11 @@ class ActiveLanguages
     
     public function defineLanguagesInParams()
     {
+        
         $languagesRepo = $this->em->getRepository('ZENLocaleBundle:Language');
         $this->activeLanguages = $languagesRepo->findBy(['active'=>true]);
+        
+//        dump($this->activeLanguages);
 //        $this->container->setParameter('locale.activeLanguage',$activeLanguages);        
     }
     
