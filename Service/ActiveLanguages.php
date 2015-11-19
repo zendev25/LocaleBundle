@@ -1,4 +1,5 @@
 <?php
+
 namespace ZEN\LocaleBundle\Service;
 
 /**
@@ -6,31 +7,19 @@ namespace ZEN\LocaleBundle\Service;
  *
  * @author jona
  */
-class ActiveLanguages
-{
-    
+class ActiveLanguages {
+
     private $em;
     private $container;
-    private $activeLanguages;
-    
-    public function __construct($container)
-    {
+
+    public function __construct($container) {
         $this->container = $container;
         $this->em = $container->get('doctrine')->getManager();
     }
-    
-    public function defineLanguagesInParams()
-    {
-        
+
+    public function getActive() {
         $languagesRepo = $this->em->getRepository('ZENLocaleBundle:Language');
-        $this->activeLanguages = $languagesRepo->findBy(['active'=>true]);
-        
-//        dump($this->activeLanguages);
-//        $this->container->setParameter('locale.activeLanguage',$activeLanguages);        
+        return $languagesRepo->findBy(['active' => true]);
     }
-    
-    public function getActive()
-    {
-        return $this->activeLanguages;
-    }
+
 }
