@@ -39,6 +39,17 @@ class TranslatableRepository extends EntityRepository {
     public function setUser($user) {
         $this->user = $user;
     }
+    
+    //Pour les form, type 'entity'
+    public function myFindAll($statusTrans = true) {
+        $qb = $this->createQueryBuilder('e');
+        if ($statusTrans) {
+            $qb->where('e.statusTrans=:statusTrans')
+                    ->setParameter('statusTrans', $statusTrans);
+        }
+
+        return $qb;
+    }
 
     public function findAll($locale = null, $statusTrans = true) {
         $qb = $this->createQueryBuilder('e');
