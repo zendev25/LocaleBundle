@@ -87,7 +87,7 @@ class Address {
     private $updated;
 
     public function __toString() {
-        return $this->street . ', <br />' . ucfirst($this->city) . ' (' . $this->zip . ')';
+        return $this->street . ', ' . ucfirst($this->city) . ' (' . $this->zip . ')';
     }
 
     /**
