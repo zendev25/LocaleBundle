@@ -40,9 +40,9 @@ class Language extends TranslatableEntity {
      *
      * @var string
      * 
-     * @ORM\Column(name="ISO",type="string",length=10)
+     * @ORM\Column(name="iso",type="string",length=10)
      */
-    private $iSO;
+    private $iso;
 
     /**
      *
@@ -131,19 +131,19 @@ class Language extends TranslatableEntity {
      * @param string $iSO
      * @return Language
      */
-    public function setISO($iSO) {
-        $this->iSO = $iSO;
+    public function setIso($iso) {
+        $this->iso = $iso;
 
         return $this;
     }
 
     /**
-     * Get iSO
+     * Get iso
      *
      * @return string 
      */
-    public function getISO() {
-        return $this->iSO;
+    public function getIso() {
+        return $this->iso;
     }
 
     /**
