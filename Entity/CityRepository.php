@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class CityRepository extends EntityRepository
 {
+    /**
+     * Fonction qui retourne les villes ayant au moins la population passée en paramètre
+     * @param type $nbPopulationMin 
+     * @return type
+     */
+    public function getMostPopulateCity($nbPopulationMin, $limit){
+
+        return $this->createQueryBuilder('c')
+                ->select('c')
+                ->where('c.population > :nbMax')
+                ->orderBy('c.population','DESC')
+                ->getQuery()
+                ->setParameter('nbMax', $nbPopulationMin)
+                ->setMaxResults($limit)
+                ->getResult();
+    }
+    
 }

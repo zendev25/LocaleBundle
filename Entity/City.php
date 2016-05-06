@@ -44,6 +44,22 @@ class City
      */
     private $code;
     
+    
+    /**
+     * @var integer 
+     *
+     * @ORM\Column(name="insee", type="integer")
+     */
+    private $insee;
+    
+    
+    /**
+     * @var integer 
+     *
+     * @ORM\Column(name="population", type="integer")
+     */    
+    private $population;
+    
     /**
      * @var float
      * @Assert\Type(type="float")
@@ -241,5 +257,51 @@ class City
     public function getLatitude()
     {
         return $this->latitude;
+    }
+
+    /**
+     * Set insee
+     *
+     * @param integer $insee
+     * @return City
+     */
+    public function setInsee($insee)
+    {
+        $this->insee = $insee;
+
+        return $this;
+    }
+
+    /**
+     * Get insee
+     *
+     * @return integer 
+     */
+    public function getInsee()
+    {
+        return $this->insee;
+    }
+
+    /**
+     * Set population
+     *
+     * @param integer $population
+     * @return City
+     */
+    public function setPopulation($population)
+    {
+        $this->population = $population;
+
+        return $this;
+    }
+
+    /**
+     * Get population
+     *
+     * @return integer 
+     */
+    public function getPopulation()
+    {
+        return $this->population;
     }
 }
