@@ -52,66 +52,40 @@ class LocalController extends Controller
 //        $em->flush();
 //    }
 //    
-//    public function importCSVCityAction(){
-//        set_time_limit(0);
-//        
-//        $em = $this->getDoctrine()->getManager();
-//        
-//        $dptRepo = $em->getRepository('ZENLocaleBundle:Department');
-//        
-//        $cityFile = fopen('C:/wamp64/www/hall-inn/trunk/web/uploads/imports/city_france_8.csv','r');
-//        while (($line = fgetcsv($cityFile)) !== FALSE) {
-//            $city = new City();
-//            $city->setName($line[1]);
-//            $currentCode = strtoupper(strval($line[0]));
-//            $departmentEntity = $dptRepo->findOneBy(array ('code' => $currentCode));
-//            $city->setDepartment($departmentEntity);
-//            $em->persist($city);
-//        }
-//        fclose($cityFile);
-//        $em->flush();
-//    }
+
 //    
 //    public function importCityDataAction(){
 //        set_time_limit(0);
+//        
 //        $em = $this->getDoctrine()->getManager();
+//        
 //        $dptRepo = $em->getRepository('ZENLocaleBundle:Department');
-//        $codeValue = '976';
-//        $continue = true;
-//        $prev='0';
-//        $cityFile = fopen('C:/wamp64/www/hall-inn/trunk/web/uploads/imports/villes_france.csv','r');
-//        while (($line = fgetcsv($cityFile)) !== FALSE && $continue) {
-//            $code = $line[1];
-//            if ($code == $codeValue) {
+//        $cityRepo = $em->getRepository('ZENLocaleBundle:City');
+//        
+//        
+//        $dptEntity = false;
+//        
+//        $citiesImported = $cityRepo->findAll();
+//        foreach ($citiesImported as $cityImported){
+//            $citiesCompare[] = $cityImported->getInsee();
+//        }
+//        
+////        die(__DIR__.'../Resources/public/datas/villes_france.csv');
+//        $cityFile = fopen(__DIR__.'/../Resources/public/datas/villes_france.csv','r');
+//        while (($line = fgetcsv($cityFile)) !== FALSE ) {
 //            
-//               if ($code == '971') {
-//                    $city = new City();
-//                    $city->setName('Saint-Barthélemy');
-//                    $city->setSlug('st-barthelemy');
-//                    $city->setCode('97133');
-//                    $city->setDepartment($dptEntity);
-//                    $city->setInsee('97123');
-//                    $city->setPopulation('8938');
-//                    $city->setLongitude(floatval('-62.8333'));
-//                    $city->setLatitude(floatval('17.9167'));
-//                    $em->persist($city);
-//                    dump($city);    
+//            //Si la ville n'est pas importé 
+//            if(!in_array($line[10], $citiesCompare)){
+//             
+//                $currentCode  = $line[1];
 //
-//                    $city = new City();
-//                    $city->setName('Saint-Martin');
-//                    $city->setSlug('st-martin');
-//                    $city->setCode('97150');
-//                    $city->setDepartment($dptEntity);
-//                    $city->setInsee('97127');
-//                    $city->setPopulation('36979');
-//                    $city->setLongitude(floatval('18.0913'));
-//                    $city->setLatitude(floatval('-63.0829'));
-//                    $em->persist($city);
-//                    dump($city);   
+//
+//                if(!$dptEntity || intval($dptEntity->getCode()) !== intval($currentCode)){
+//                    $dptEntity = $dptRepo->findOneBy(array ('code' => $currentCode));
 //                }
-//            
+//
 //                $city = new City();
-//                $dptEntity = $dptRepo->findOneBy(array ('code' => $code));
+//
 //                $city->setName($line[5]);
 //                $city->setSlug($line[2]);
 //                $city->setCode($line[8]);
@@ -125,16 +99,17 @@ class LocalController extends Controller
 //                    $city->setLatitude(floatval($line[20]));
 //                }
 //                $em->persist($city);
-//                dump($city);    
-//            }elseif($prev == $codeValue){
-//                $continue = false;
-//            }
-//            $prev = $code;
+//                echo 'Ville ajouté :'. $city->getName()." \n <br />";    
+//                $em->flush();
+//            }   
 //        }
-//        $em->flush();
+//        
+//        
 //        fclose($cityFile);
+//        
 //    }
-    
+//
+//    
   
     public function checkAction(){
         set_time_limit(0);
