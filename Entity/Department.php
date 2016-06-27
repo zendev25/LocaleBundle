@@ -46,11 +46,7 @@ class Department
 
     /**
      * @Assert\Valid()
-<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity = "ZEN\LocaleBundle\Entity\Area", inversedBy = "departments")
-=======
-     * @ORM\ManyToOne(targetEntity = "ZEN\LocaleBundle\Entity\Area")
->>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
      */
     private $area;
     

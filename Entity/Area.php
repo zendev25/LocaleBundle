@@ -47,11 +47,7 @@ class Area
     
     /**
      * @Assert\Valid()
-<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity = "ZEN\LocaleBundle\Entity\Country", inversedBy = "areas")
-=======
-     * @ORM\ManyToOne(targetEntity = "ZEN\LocaleBundle\Entity\Country")
->>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
      */
     private $country;
     
@@ -67,7 +63,6 @@ class Area
      * @ORM\OneToMany(targetEntity ="ZEN\LocaleBundle\Entity\City", mappedBy = "area")
      */
     private $cities;
-<<<<<<< HEAD
     
     /**
      * @Assert\Valid()
@@ -75,10 +70,6 @@ class Area
      */
     private $configHosts;
     
-=======
-
-
->>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
     /**
      * Get id
      *
@@ -254,7 +245,6 @@ class Area
     {
         return $this->cities;
     }
-<<<<<<< HEAD
 
     /**
      * Set configHosts
@@ -278,6 +268,4 @@ class Area
     {
         return $this->configHosts;
     }
-=======
->>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
 }

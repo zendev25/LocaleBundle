@@ -12,7 +12,6 @@ use Doctrine\ORM\EntityRepository;
  */
 class DepartmentRepository extends EntityRepository
 {
-<<<<<<< HEAD
     public function getDepartmentByZipCode($zipCode) {
         
         $qb = $this->createQueryBuilder('d')
@@ -34,6 +33,4 @@ class DepartmentRepository extends EntityRepository
                 ->getOneOrNullResult();    
     }
     
-=======
->>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
 }
