@@ -2,6 +2,7 @@
 
 namespace ZEN\LocaleBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -46,9 +47,9 @@ class Country extends TranslatableEntity {
     /**
      * @var string
      *
-     * @ORM\Column(name="ISO", type="string", length=255)
+     * @ORM\Column(name="iso", type="string", length=255)
      */
-    private $iSO;
+    private $iso;
 
     /**
      *
@@ -78,6 +79,12 @@ class Country extends TranslatableEntity {
      * @ORM\Column(type="datetime")
      */
     private $updated;
+    
+    /**
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity = "ZEN\LocaleBundle\Entity\Area", mappedBy = "country") 
+     */
+    private $areas;
 
     public function __toString() {
         if(null !== $this->name)
@@ -138,24 +145,24 @@ class Country extends TranslatableEntity {
     }
 
     /**
-     * Set iSO
+     * Set iso
      *
-     * @param string $iSO
+     * @param string $iso
      * @return Country
      */
-    public function setISO($iSO) {
-        $this->iSO = $iSO;
+    public function setIso($iso) {
+        $this->iso = $iso;
 
         return $this;
     }
 
     /**
-     * Get iSO
+     * Get iso
      *
      * @return string 
      */
-    public function getISO() {
-        return $this->iSO;
+    public function getIso() {
+        return $this->iso;
     }
 
     /**
@@ -294,5 +301,38 @@ class Country extends TranslatableEntity {
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add areas
+     *
+     * @param \ZEN\LocaleBundle\Entity\Area $areas
+     * @return Country
+     */
+    public function addArea(\ZEN\LocaleBundle\Entity\Area $areas)
+    {
+        $this->areas[] = $areas;
+
+        return $this;
+    }
+
+    /**
+     * Remove areas
+     *
+     * @param \ZEN\LocaleBundle\Entity\Area $areas
+     */
+    public function removeArea(\ZEN\LocaleBundle\Entity\Area $areas)
+    {
+        $this->areas->removeElement($areas);
+    }
+
+    /**
+     * Get areas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAreas()
+    {
+        return $this->areas;
     }
 }
