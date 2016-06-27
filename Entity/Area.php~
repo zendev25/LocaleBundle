@@ -3,7 +3,10 @@
 namespace ZEN\LocaleBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+<<<<<<< HEAD
 use Gedmo\Mapping\Annotation as Gedmo;
+=======
+>>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,7 +35,11 @@ class Area
 
     /**
      * @var string
+<<<<<<< HEAD
      * @Gedmo\Slug(fields={"name"},updatable=false)
+=======
+     *
+>>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
@@ -63,6 +70,7 @@ class Area
      * @ORM\OneToMany(targetEntity ="ZEN\LocaleBundle\Entity\City", mappedBy = "area")
      */
     private $cities;
+<<<<<<< HEAD
     
     /**
      * @Assert\Valid()
@@ -71,6 +79,10 @@ class Area
      */
     private $configHosts;
     
+=======
+
+
+>>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
     /**
      * Get id
      *
@@ -149,6 +161,7 @@ class Area
     {
         return $this->code;
     }
+<<<<<<< HEAD
     /**
      * Constructor
      */
@@ -269,4 +282,6 @@ class Area
     {
         return $this->configHosts;
     }
+=======
+>>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
 }

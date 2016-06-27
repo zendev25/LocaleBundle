@@ -1,3 +1,23 @@
 #zen_locale_country_reset:
 #    path:     /countries-reset
 #    defaults: { _controller: ZENLocaleBundle:Countries:reset }
+
+zen_import_region_view:
+    pattern: /import-region
+    defaults: { _controller: ZENLocaleBundle:Local:importCSVRegion }
+    
+zen_import_department_view:
+    pattern: /import-department
+    defaults: { _controller: ZENLocaleBundle:Local:importCSVDepartment }
+    
+zen_import_city_view:
+    pattern: /import-city
+    defaults: { _controller: ZENLocaleBundle:Local:importCSVCity }
+    
+zen_check_view:
+    pattern: /check
+    defaults: { _controller: ZENLocaleBundle:Local:check }
+    
+zen_import_data_view:
+    pattern: /import-data
+    defaults: { _controller: ZENLocaleBundle:Local:importCityData }

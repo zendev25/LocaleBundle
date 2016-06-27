@@ -29,6 +29,7 @@ class CityRepository extends EntityRepository
                 ->getResult();
     }
     
+<<<<<<< HEAD
     public function getCityByName($name){
         if ($name) {
             $qb = $this->createQueryBuilder('c')
@@ -43,4 +44,6 @@ class CityRepository extends EntityRepository
         
     }
     
+=======
+>>>>>>> 137ee28e6debf00dc7b350c71a5511e295db9fd4
 }
