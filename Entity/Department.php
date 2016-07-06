@@ -55,6 +55,13 @@ class Department
      * @ORM\OneToMany(targetEntity = "ZEN\LocaleBundle\Entity\City", mappedBy = "department") 
      */
     private $cities;
+    
+    /**
+     * @Assert\Valid()
+     * @ORM\OneToMany(targetEntity = "LE\CoreBundle\Entity\Host", mappedBy = "department") 
+     */
+    private $host;
+    
 
     /**
      * Get id
@@ -196,5 +203,38 @@ class Department
     public function getCities()
     {
         return $this->cities;
+    }
+
+    /**
+     * Add host
+     *
+     * @param \LE\CoreBundle\Entity\Host $host
+     * @return Department
+     */
+    public function addHost(\LE\CoreBundle\Entity\Host $host)
+    {
+        $this->host[] = $host;
+
+        return $this;
+    }
+
+    /**
+     * Remove host
+     *
+     * @param \LE\CoreBundle\Entity\Host $host
+     */
+    public function removeHost(\LE\CoreBundle\Entity\Host $host)
+    {
+        $this->host->removeElement($host);
+    }
+
+    /**
+     * Get host
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHost()
+    {
+        return $this->host;
     }
 }
