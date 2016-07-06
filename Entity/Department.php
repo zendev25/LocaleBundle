@@ -60,7 +60,7 @@ class Department
      * @Assert\Valid()
      * @ORM\OneToMany(targetEntity = "LE\CoreBundle\Entity\Host", mappedBy = "department") 
      */
-    private $host;
+    private $hosts;
     
 
     /**
@@ -213,7 +213,7 @@ class Department
      */
     public function addHost(\LE\CoreBundle\Entity\Host $host)
     {
-        $this->host[] = $host;
+        $this->hosts[] = $host;
 
         return $this;
     }
@@ -225,7 +225,7 @@ class Department
      */
     public function removeHost(\LE\CoreBundle\Entity\Host $host)
     {
-        $this->host->removeElement($host);
+        $this->hosts->removeElement($host);
     }
 
     /**
@@ -233,8 +233,8 @@ class Department
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getHost()
+    public function getHosts()
     {
-        return $this->host;
+        return $this->hosts;
     }
 }
