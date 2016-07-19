@@ -57,7 +57,6 @@ class Department
     private $cities;
     
     /**
-     * @Assert\Valid()
      * @ORM\OneToMany(targetEntity = "LE\CoreBundle\Entity\Host", mappedBy = "department") 
      */
     private $hosts;
